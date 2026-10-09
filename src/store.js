@@ -1,3 +1,6 @@
+import { type } from "@testing-library/user-event/dist/type";
+import { createStore } from "redux";
+
 const initialState = {
   balance: 0,
   loan: 0,
@@ -20,12 +23,14 @@ function reducer(state = initialState, action) {
       if (state.loan > 0) return state;
       return {
         ...state,
-        loan: action.payload,
+        loan: action.payload.amount,
+        loanPurpose: action.payload.purpose,
+        balance: state.balance + action.payload.amount,
       };
     case "accaunt/payLoan":
       return {
         ...state,
-        loan: 0,
+        loan: action.payload,
         loanPurpose: "",
         balance: state.balance - action.payload,
       };
@@ -33,3 +38,13 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
+
+const store = createStore(reducer);
+store.dispatch({ type: "accaunt/deposit", payload: 400 });
+store.dispatch({ type: "accaunt/payLoan", payload: 0 });
+store.dispatch({ type: "accaunt/withdraw", payload: 100 });
+store.dispatch({
+  type: "accaunt/requestLoan",
+  payload: { amount: 100, purpose: "Buy a new car" },
+});
+console.log(store.getState());

@@ -39,19 +39,19 @@ function AccountOperations() {
         </div>
 
         <div>
-          <label>Withdraw</label>
+          <label>Withdraw/Pul-yechish </label>
           <input
             type="number"
             value={withdrawalAmount}
             onChange={(e) => setWithdrawalAmount(+e.target.value)}
           />
           <button onClick={handleWithdrawal}>
-            Withdraw {withdrawalAmount}
+            Withdraw/Pul-yechish {withdrawalAmount}
           </button>
         </div>
 
         <div>
-          <label>Request loan</label>
+          <label>Request loan/kredit</label>
           <input
             type="number"
             value={loanAmount}
@@ -63,12 +63,12 @@ function AccountOperations() {
             onChange={(e) => setLoanPurpose(e.target.value)}
             placeholder="Loan purpose"
           />
-          <button onClick={handleRequestLoan}>Request loan</button>
+          <button onClick={handleRequestLoan}>Request loan/kredit</button>
         </div>
 
         <div>
           <span>Pay back $X</span>
-          <button onClick={handlePayLoan}>Pay loan</button>
+          <button onClick={handlePayLoan}>Pay loan/Kreditni to'lash</button>
         </div>
       </div>
     </div>
