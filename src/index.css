@@ -1,13 +1,230 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --color-bg: #f1f5f9;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-soft: rgba(79, 70, 229, 0.15);
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08),
+    0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 20px 40px -12px rgba(79, 70, 229, 0.45);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--color-text);
+  background: radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.1), transparent 40%),
+    var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App container */
+#root > div {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0 0 40px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  max-width: calc(100% - 280px);
+}
+
+h2 {
+  margin: 40px 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Cards */
+.inputs {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 28px 32px;
+}
+
+.inputs > * + * {
+  margin-top: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.inputs > * + button {
+  border-top: none;
+}
+
+.inputs > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+}
+
+.inputs > div:last-child {
+  padding-bottom: 0;
+}
+
+label,
+.inputs span {
+  min-width: 160px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Form controls */
+input,
+select {
+  margin: 0;
+  flex: 1 1 160px;
+  min-width: 0;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+select {
+  flex: 0 1 160px;
+  cursor: pointer;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  background-color: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+button {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+button:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+/* Balance */
+.balance {
+  position: absolute;
+  top: 40px;
+  right: 24px;
+  min-width: 240px;
+  padding: 20px 28px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.balance::before {
+  content: "Balance";
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  #root > div {
+    padding: 32px 16px 48px;
+  }
+
+  h1 {
+    order: -2;
+    max-width: none;
+    margin-bottom: 24px;
+    font-size: 26px;
+  }
+
+  .balance {
+    position: static;
+    order: -1;
+    margin-bottom: 24px;
+  }
+
+  .inputs {
+    padding: 20px;
+  }
+
+  label,
+  .inputs span {
+    min-width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
 }
