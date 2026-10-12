@@ -4,7 +4,7 @@ const initialStateAccaunt = {
   loanPurpose: "",
 };
 
-function accauntReducer(state = initialStateAccaunt, action) {
+export default function accauntReducer(state = initialStateAccaunt, action) {
   switch (action.type) {
     case "accaunt/deposit":
       return {
@@ -34,4 +34,17 @@ function accauntReducer(state = initialStateAccaunt, action) {
     default:
       return state;
   }
+}
+
+export function deposit(amout) {
+  return { type: "accaunt/deposit", payload: amout };
+}
+export function withdraw(amount) {
+  return { type: "accaunt/withdraw", payload: amount };
+}
+export function requestLoan(amount, purpose) {
+  return { type: "accaunt/requestLoan", payload: { amount, purpose } };
+}
+export function payLoan(amount) {
+  return { type: "accaunt/payLoan", payload: amount };
 }

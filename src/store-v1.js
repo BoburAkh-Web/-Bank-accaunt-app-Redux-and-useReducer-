@@ -71,23 +71,6 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
-// function deposit(amout) {
-//   return { type: "accaunt/deposit", payload: amout };
-// }
-// function withdraw(amount) {
-//   return { type: "accaunt/withdraw", payload: amount };
-// }
-// function requestLoan(amount, purpose) {
-//   return { type: "accaunt/requestLoan", payload: { amount, purpose } };
-// }
-// function payLoan(amount) {
-//   return { type: "accaunt/payLoan", payload: amount };
-// }
-
-// store.dispatch(deposit(200));
-// store.dispatch(withdraw(100));
-// store.dispatch(requestLoan(50, "Buy a new car"));
-
 function createCustomer(fullName, nationalID) {
   return {
     type: "customer/createCustomer",

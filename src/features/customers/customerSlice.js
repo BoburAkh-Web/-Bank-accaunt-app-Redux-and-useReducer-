@@ -4,7 +4,7 @@ const initialStateCustomer = {
   createdAt: "",
 };
 
-function customReducer(state = initialStateCustomer, action) {
+export default function customReducer(state = initialStateCustomer, action) {
   switch (action.type) {
     case "customer/createCustomer":
       return {
@@ -23,19 +23,16 @@ function customReducer(state = initialStateCustomer, action) {
   }
 }
 
-function createCustomer(fullName, nationalID) {
+export function createCustomer(fullName, nationalID) {
   return {
     type: "customer/createCustomer",
     payload: { fullName, nationalID, createdAt: new Date().toISOString() },
   };
 }
 
-function updateName(fullName) {
+export function updateName(fullName) {
   return {
     type: "customer/updateName",
     payload: fullName,
   };
 }
-
-store.dispatch(createCustomer("Bobur Akhmadaliev", "230520"));
-console.log(store.getState());
