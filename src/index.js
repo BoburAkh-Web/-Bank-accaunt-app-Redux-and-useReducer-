@@ -5,7 +5,7 @@ import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
 
-store.dispatch({ type: "accaunt/deposit", payload: 1000 });
+store.dispatch({ type: "accaunt/deposit", payload: 0 });
 console.log(store.getState());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
